@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb:10.5
+    volumes:
+     - ./mariadb-config:/etc/mysql/mariadb.conf.d
+     - ./mysql:/var/lib/mysql
+    restart: always
+    ports:
+            - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: YourStrongPassword
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+            - 8111:8080
